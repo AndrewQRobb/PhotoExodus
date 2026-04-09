@@ -2,9 +2,11 @@
 .build/
 .swiftpm/
 Package.resolved
-*.xcodeproj
+
+# Xcode
 xcuserdata/
 DerivedData/
+build/
 
 # macOS
 .DS_Store

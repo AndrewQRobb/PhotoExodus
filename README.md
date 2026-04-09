@@ -24,19 +24,34 @@ Forked from [GooglePhotosTakeoutHelper](https://github.com/TheLastGimbus/GoogleP
 
 ## Building
 
-Requires macOS 14+ (Sonoma) and Xcode or Swift toolchain.
+Requires macOS 14+ (Sonoma) and Xcode.
 
 ```bash
-swift build
+# Run tests
 swift test
+
+# Build the app via Xcode
+xcodebuild -project PhotoExodus.xcodeproj -scheme PhotoExodus build
+
+# Build a DMG for distribution
+./scripts/build-dmg.sh
+```
+
+To open in Xcode for development: `open PhotoExodus.xcodeproj`
+
+### Regenerating the Xcode project
+
+The Xcode project is generated from `project.yml` using [xcodegen](https://github.com/yonaskolb/XcodeGen):
+
+```bash
+brew install xcodegen
+xcodegen generate
 ```
 
 ## Architecture
 
-The project is split into two SPM targets:
-
-- **PhotoExodusCore** -- a pure Swift library containing all processing logic (15 modules), fully testable with no UI dependencies
-- **PhotoExodus** -- a SwiftUI app that provides the GUI and drives the processing pipeline
+- **PhotoExodusCore** -- a pure Swift library (SPM) containing all processing logic (15 modules), fully testable with no UI dependencies
+- **PhotoExodus** -- an Xcode app target (SwiftUI) that provides the GUI and drives the processing pipeline
 
 ### Processing pipeline
 

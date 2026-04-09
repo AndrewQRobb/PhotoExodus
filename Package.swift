@@ -12,11 +12,6 @@ let package = Package(
             name: "PhotoExodusCore",
             path: "Sources/PhotoExodusCore"
         ),
-        .executableTarget(
-            name: "PhotoExodus",
-            dependencies: ["PhotoExodusCore"],
-            path: "Sources/PhotoExodus"
-        ),
         .testTarget(
             name: "PhotoExodusCoreTests",
             dependencies: ["PhotoExodusCore"],

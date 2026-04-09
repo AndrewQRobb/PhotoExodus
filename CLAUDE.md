@@ -1,0 +1,69 @@
+# PhotoExodus
+
+Native macOS SwiftUI app for migrating Google Photos Takeout exports to Apple Photos with maximum metadata fidelity.
+
+## What it does
+
+Takes a Google Takeout export (unzipped), extracts metadata from JSON sidecar files, writes EXIF timestamps and GPS coordinates back into image files, converts WebP to JPEG, deduplicates, removes edited copies, and outputs a clean date-organized folder structure (YYYY/MM/) ready for drag-and-drop import into Apple Photos.
+
+## Architecture
+
+SPM package with two targets:
+
+- **PhotoExodusCore** (library, 15 modules) — all processing logic, no SwiftUI, fully testable
+- **PhotoExodus** (executable) — SwiftUI app, imports PhotoExodusCore
+
+### Core pipeline (ProcessingEngine)
+
+1. **Scanner** — walks input directory, finds year folders (`Photos from YYYY`), enumerates media files, pre-caches JSON sidecar URLs
+2. **Deduplicator** — size-first grouping, SHA-256 hash, keeps file with best metadata source + shortest name
+3. **ExtrasRemover** — NFC-normalized suffix matching against 12 multilingual "-edited" suffixes
+4. **DateExtractor** — 3-stage: JSON sidecar → EXIF → filename guess. Conflict detection when dates differ by >24h
+5. **MetadataWriter** — writes EXIF date/GPS via CGImageDestination, WebP→JPEG conversion at quality 1.0
+6. **FileMover** — moves to YYYY/MM/ output structure, sets file modification date
+
+### Key patterns
+
+- **MediaItem** is a mutable class (not struct) — accumulated state through pipeline stages
+- **`effectiveSourceURL`** tracks path changes after WebP→JPEG conversion
+- **MoveStrategy protocol** enables dry-run testing
+- **CheckedContinuation** for conflict resolution UI — pipeline suspends, user decides, resumes
+- **NFC normalization** required for suffix matching (macOS filenames are NFD)
+- **7 JSON sidecar name-matching strategies** — identity, 51-char truncation, bracket swap, remove-extra, no-extension, regex suffix removal (tryhard), digit removal (tryhard)
+
+## Build & Test
+
+```bash
+swift build
+swift test   # 24 tests across 7 test classes
+```
+
+## Project structure
+
+```
+Package.swift
+Sources/
+  PhotoExodusCore/     # 15 modules (Scanner, DateExtractor, MetadataWriter, etc.)
+  PhotoExodus/         # SwiftUI app (AppViewModel, 5 views)
+Tests/
+  PhotoExodusCoreTests/  # Unit tests
+_dart_archive/         # Original Dart source (archived, not built)
+```
+
+## Requirements
+
+- macOS 14+ (Sonoma) — needed for WebP support via CGImageSource
+- Xcode or Swift toolchain
+
+## Git
+
+- **Remote:** https://github.com/AndrewQRobb/PhotoExodus.git
+- **Branch:** master (inherited from upstream fork)
+- **Upstream:** https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper (Dart original)
+
+## Status
+
+Core Swift rewrite complete. All 24 tests passing. Next steps:
+- Test with real 4.1GB Google Takeout export
+- Create Xcode project wrapper for .dmg distribution
+- Rename local directory from `GooglePhotosTakeoutHelper` to `PhotoExodus`

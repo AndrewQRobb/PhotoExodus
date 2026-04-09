@@ -17,20 +17,22 @@
 		882B8D6A858DAF9520A2664E /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F21E4FB503D610B7ACA469F /* SetupView.swift */; };
 		9618D40A1F9FA151ABC2A0C1 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067815A9A06B324F69AE369 /* SummaryView.swift */; };
 		D55AC972959CE0AE493A2422 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E5D0D5144FC948F42796F7 /* AppViewModel.swift */; };
+		E3B39858E06464B7F75BE44E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F4D1CBE42799FC09E09004 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0739DED1BB13CC4000C246C4 /* PhotoExodusCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExodusCoreTests.swift; sourceTree = "<group>"; };
 		37DABC59AEF24DD00AD5E57F /* PhotoExodus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoExodus.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A77C9F87AA0A731D16D5D24 /* GooglePhotosTakeoutHelper */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GooglePhotosTakeoutHelper; path = .; sourceTree = SOURCE_ROOT; };
 		60E5D0D5144FC948F42796F7 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		6C2CDA85DD2A0CC01EF84466 /* PhotoExodusCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoExodusCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F21E4FB503D610B7ACA469F /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		807F6E92150714A5575E0C50 /* ConflictReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictReviewView.swift; sourceTree = "<group>"; };
 		9067815A9A06B324F69AE369 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		B9F4D1CBE42799FC09E09004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2A7ED5CE5741779E1EA225B /* ProcessingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingProgressView.swift; sourceTree = "<group>"; };
 		C398C2C7805A12F67FC34FCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DBC37042BFB8E7F6D06E4641 /* PhotoExodusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExodusApp.swift; sourceTree = "<group>"; };
+		E481FE4C593A5168E34449EB /* PhotoExodus */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PhotoExodus; path = .; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				DA881DA95E72F2B22E85F522 /* Packages */,
 				3EDCC174094F9187B970E996 /* PhotoExodus */,
 				88D1FA57E351312FC8FB49E4 /* PhotoExodusCoreTests */,
+				4B39447F76FDD8518A890BCF /* Resources */,
 				84E0D2912EC8E6CBF303AEC7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +75,14 @@
 			);
 			name = PhotoExodus;
 			path = Sources/PhotoExodus;
+			sourceTree = "<group>";
+		};
+		4B39447F76FDD8518A890BCF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9F4D1CBE42799FC09E09004 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		84E0D2912EC8E6CBF303AEC7 /* Products */ = {
@@ -107,7 +118,7 @@
 		DA881DA95E72F2B22E85F522 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				5A77C9F87AA0A731D16D5D24 /* GooglePhotosTakeoutHelper */,
+				E481FE4C593A5168E34449EB /* PhotoExodus */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -120,6 +131,7 @@
 			buildConfigurationList = 2B3573EA4E2B393641F19E92 /* Build configuration list for PBXNativeTarget "PhotoExodus" */;
 			buildPhases = (
 				83EB298F744C5B5A52A7CB90 /* Sources */,
+				B2F11A2B45AA1AD2E00F0301 /* Resources */,
 				7011E50295C62B96634ECA0B /* Frameworks */,
 			);
 			buildRules = (
@@ -189,6 +201,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B2F11A2B45AA1AD2E00F0301 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3B39858E06464B7F75BE44E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		13CD75349EF43CADB8EA84A0 /* Sources */ = {

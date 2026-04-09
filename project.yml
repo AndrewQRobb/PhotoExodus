@@ -16,6 +16,8 @@ targets:
     platform: macOS
     sources:
       - path: Sources/PhotoExodus
+      - path: Resources/Assets.xcassets
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.andrewrobb.PhotoExodus
@@ -31,9 +33,6 @@ targets:
     dependencies:
       - package: PhotoExodusCore
         product: PhotoExodusCore
-    resources:
-      - path: Resources/Assets.xcassets
-
   PhotoExodusCoreTests:
     type: bundle.unit-test
     platform: macOS

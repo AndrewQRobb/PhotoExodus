@@ -1,15 +1,34 @@
-.idea/
+# Swift / SPM
+.build/
+.swiftpm/
+Package.resolved
+*.xcodeproj
+xcuserdata/
+DerivedData/
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# IDE
 .vscode/
+.idea/
 
-# Files and directories created by pub.
-.dart_tool/
-.packages
+# Environment / secrets
+.env
+.env.*
 
-# Conventional directory for build output.
-build/
+# Claude Code local state
+.claude/
 
+# Test / output directories
 photos/
-
 ALL_PHOTOS/
 output/
 *.log
+
+# Dart (archived source)
+_dart_archive/.dart_tool/
+_dart_archive/.packages
+_dart_archive/build/
